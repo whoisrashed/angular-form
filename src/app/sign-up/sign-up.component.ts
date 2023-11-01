@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-sign-up',
@@ -8,15 +10,28 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpComponent {
 
-  regForm = new FormGroup({
-    userName: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl()
+regForm :FormGroup;
+
+
+constructor( private fb:FormBuilder){
+
+
+  this.regForm = this.fb.group({
+    userName:['',Validators.compose([
+      Validators.required,
+      Validators.minLength(4),
+      Validators.maxLength(8)
+    ])],
+
+    email:[''],
+    password:['']
   })
+}
 
 
-  signUp() {
-    console.log(this.regForm.value, this.regForm)
-  }
+
+signUp(){
+  console.log(this.regForm.value , this.regForm)
+}
 
 }
