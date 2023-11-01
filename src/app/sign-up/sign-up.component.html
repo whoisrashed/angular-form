@@ -24,6 +24,9 @@
                                 <span *ngIf="regForm.get('userName')?.errors?.['required']"> User name required </span>
                                 <span *ngIf="regForm.get('userName')?.errors?.['minlength']"> User name required min length 4 chanracter  </span>
                                 <span *ngIf="regForm.get('userName')?.errors?.['maxlength']"> User name required max length 8 chanracter  </span>
+                                <span *ngIf="regForm.get('userName')?.errors?.['whiteSpace']"> User name required no space  </span>
+                                <span *ngIf="regForm.get('userName')?.errors?.['userExist']"> User name exist  </span>
+
                             </div>
                             <div class="field padding-bottom--24">
                                 <label for="email">Email</label>
