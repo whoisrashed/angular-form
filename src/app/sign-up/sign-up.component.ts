@@ -22,7 +22,7 @@ constructor( private fb:FormBuilder){
       Validators.minLength(4),
       Validators.maxLength(8),
       CustomValidator.noWhiteSpace
-    ]),CustomValidator.usernameExistAsync],
+    ])],
 
     email:[''],
     password:['']

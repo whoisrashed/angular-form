@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
-import { Observable, delay, of } from "rxjs";
+
 
 
 
@@ -13,21 +13,4 @@ export class CustomValidator {
     }
 
 
-    static usernameExistAsync(control:AbstractControl) : Promise< ValidationErrors | null> | Observable< ValidationErrors | null>{
-
-        const usersNames = [
-            'rashed',
-            'r@shed',
-            'rash3d'
-        ];
-
-
-        const value = control.value as string;
-
-        const isExist = usersNames.includes(value);
-
-        return isExist? of({userExist:true}).pipe(delay(500)): of(null).pipe(delay(500));
-
-    }
-    
 }
