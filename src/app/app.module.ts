@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BuyTicketsComponent } from './buy-tickets/buy-tickets.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)

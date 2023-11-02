@@ -1,26 +1,29 @@
 <div class="container">
 
 
-    <form class="text-center border border-light p-5">
-        <input type="text" class="form-control mb-4" placeholder="Enter Name" />
+    <form [formGroup]="form" class="text-center border border-light p-5">
+        <input formControlName="name" type="text" class="form-control mb-4" placeholder="Enter Name" />
 
         <div>
             <div class="row">
                 <div class="col-md-1">
                     <p class="lead">Skills </p>
                 </div>
-                <div class="col-md-10">
-                    <input type="text" class="form-control mb-4" placeholder="Enter Skills" />
-                    <input type="text" class="form-control mb-4" placeholder="Enter Skills" />
-                    <input type="text" class="form-control mb-4" placeholder="Enter Skills" />
+                <div class="col-md-10" formArrayName="skills">
+                   
+                  
+                       <ng-container *ngFor="let item of skills['controls']; let i = index ">
+                             <input type="text" class="form-control mb-4" [formControlName]="i"  placeholder="Enter Skills" />
+                       </ng-container>
+                   
                 </div>
                 <div class="col-md-1">
-                    <button class="btn btn-primary">Add</button>
+                    <button (click)="addSkill()" class="btn btn-primary">Add</button>
                 </div>
             </div>
         </div>
 
-        <button class="btn btn-danger">Submit</button>
+        <button (click)="submit()" class="btn btn-danger">Submit</button>
     </form>
 
 </div>

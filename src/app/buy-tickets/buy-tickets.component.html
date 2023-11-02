@@ -1,55 +1,52 @@
 <div class="container">
     <br />
-    <h1 class="text-danger text-center">Buy Tickets</h1>
+    <h1 class="text-danger text-center">Contact Address </h1>
 
     <div class="row">
 
     </div>
-    <form novalidate class="text-center border border-light p-5">
-        <input type="text" class="form-control mb-4" placeholder="Enter Email" />
-        <input type="text" class="form-control mb-4" placeholder="Enter Phone" />
-        <form>
-            <input type="text" class="form-control mb-4" placeholder="Enter Street Name" />
-            <input type="number" class="form-control mb-4" placeholder="Enter Postal code " />
-        </form>
+    <form  [formGroup]="contactForm"  class="text-center border border-light p-5">
+        <input type="text" formControlName="name" class="form-control mb-4" placeholder="Enter Name" />
+        <input type="text"  formControlName="mobileNo" class="form-control mb-4" placeholder="Enter Phone" />
+
         <div>
             <div class="row">
                 <div class="col-md-2">
-                    <p class="lead">Ticket </p>
+                    <p class="lead">Address </p>
                 </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control mb-4" placeholder="Enter Name" />
+                <div class="col-md-10 row" formArrayName="address" >
+                   
+                  
+                    <ng-container *ngFor="let item of address['controls']; let i=index; let first=first">
+                        
+                        
+                        <ng-container [formGroupName]="i">
+                            <div class="col-md-5" > 
+                                <input type="text" formControlName="street"  class="form-control mb-4" placeholder="Street" />
+                            </div>
+    
+                            <div class="col-md-5" >
+                                <input type="text" formControlName="zipCode"  class="form-control mb-4" placeholder="ZipCode" />
+                            </div>
+    
+                         
+        
+                            <div class="col-md-2 mt-2">
+                                <span *ngIf="first"> <i (click)="addAddress()" class="fa-solid fa-circle-plus mr-3"></i></span>
+                                <span *ngIf="!first"><i  (click)="removeAddress(i)" class="fa-solid fa-circle-minus"></i></span>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                 
+                    
                 </div>
-                <div class="col-md-4">
-                    <input type="number" class="form-control mb-4" placeholder="Enter Age " />
-                </div>
-
-                <div class="col-md-2">
-                    add
-                </div>
+                
             </div>
-            <div class="row">
-                <div class="col-md-2">
-
-                </div>
-                <div class="col-md-5">
-
-                    <!-- <div class="alert  alert-danger"
-              *ngIf="tickets.controls[i].get('name').hasError('required') && tickets.controls[i].get('name').touched">
-              Name is required
-            </div> -->
-                </div>
-                <div class="col-md-5">
-                    <!-- <div class="alert  alert-danger"
-              *ngIf="tickets.controls[i].get('age').hasError('required') && tickets.controls[i].get('age').touched">
-              Age is required
-            </div> -->
-                </div>
-            </div>
+         
 
         </div>
 
-        <button class="btn btn-danger">Submit</button>
+        <button  (click)="submit()" class="btn btn-danger">Submit</button>
     </form>
 
 </div>

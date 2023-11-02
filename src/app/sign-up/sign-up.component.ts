@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -8,15 +9,31 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignUpComponent {
 
-  regForm = new FormGroup({
-    userName: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl()
-  })
 
+  form:FormGroup;
 
-  signUp() {
-    console.log(this.regForm.value, this.regForm)
+  constructor( private fb:FormBuilder){
+    
+    this.form = this.fb.group({
+      name : [],
+      skills : this.fb.array([
+        new FormControl(),
+        new FormControl(),
+      ])
+    })
   }
 
+
+  get skills(){
+    
+    return this.form.get('skills') as FormArray;
+  }
+
+  addSkill(){
+     this.skills.push(new FormControl())
+  }
+
+  submit(){
+    console.log(this.form.value)
+  }
 }
