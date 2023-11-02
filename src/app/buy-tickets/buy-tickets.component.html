@@ -1,0 +1,55 @@
+<div class="container">
+    <br />
+    <h1 class="text-danger text-center">Buy Tickets</h1>
+
+    <div class="row">
+
+    </div>
+    <form novalidate class="text-center border border-light p-5">
+        <input type="text" class="form-control mb-4" placeholder="Enter Email" />
+        <input type="text" class="form-control mb-4" placeholder="Enter Phone" />
+        <form>
+            <input type="text" class="form-control mb-4" placeholder="Enter Street Name" />
+            <input type="number" class="form-control mb-4" placeholder="Enter Postal code " />
+        </form>
+        <div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p class="lead">Ticket </p>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control mb-4" placeholder="Enter Name" />
+                </div>
+                <div class="col-md-4">
+                    <input type="number" class="form-control mb-4" placeholder="Enter Age " />
+                </div>
+
+                <div class="col-md-2">
+                    add
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-5">
+
+                    <!-- <div class="alert  alert-danger"
+              *ngIf="tickets.controls[i].get('name').hasError('required') && tickets.controls[i].get('name').touched">
+              Name is required
+            </div> -->
+                </div>
+                <div class="col-md-5">
+                    <!-- <div class="alert  alert-danger"
+              *ngIf="tickets.controls[i].get('age').hasError('required') && tickets.controls[i].get('age').touched">
+              Age is required
+            </div> -->
+                </div>
+            </div>
+
+        </div>
+
+        <button class="btn btn-danger">Submit</button>
+    </form>
+
+</div>
