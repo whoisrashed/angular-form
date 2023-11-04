@@ -1,0 +1,100 @@
+<div class="container">
+    <div *ngIf="!submitted">
+      <h1>Book a movie</h1>
+      <form  [formGroup]="bookMovieForm">
+        <div class="form-group">
+          <label for="uName">User Name</label>
+          <input type="text" class="form-control" formControlName="uName">
+          <div class="alert alert-danger" >User name is required</div>
+        </div>
+        <div class="form-group">
+          <label for="name">Choose a movie</label>
+          <select class="form-control" formControlName="name">
+            <option *ngFor="let m of movies" [value]="m">{{ m }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cinemaHall">Choose cinema hall</label>
+          <select class="form-control" formControlName="cinemaHall">
+            <option *ngFor="let c of cinemaHalls" [value]="c">{{ c }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="timing">Movie Timing</label>
+          <select class="form-control" formControlName="timing">
+            <option *ngFor="let mt of movieTimings" [value]="mt">{{ mt }}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-default" >Submit</button>
+      </form>
+    </div>
+    <div *ngIf="submitted">
+      <h2>Here is your e-ticket:</h2>
+      <div class="row">
+        <div class="col-4">User Name : </div>
+        <div class="col-8 pull-left"></div>
+      </div>
+      <div class="row">
+        <div class="col-4">Cinema Hall : </div>
+        <div class="col-8 pull-left"></div>
+      </div>
+      <div class="row">
+        <div class="col-4">Movie Name : </div>
+        <div class="col-8 pull-left"></div>
+      </div>
+      <div class="row">
+        <div class="col-4">Movie Timing : </div>
+        <div class="col-8 pull-left"></div>
+      </div>
+      <br />
+      <button class="btn btn-default" (click)="submitted=false">Edit</button>
+    </div>
+  </div>
+
+
+
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+    <div class="card m-3">
+        <h5 class="card-header">Angular 8 Dynamic Reactive Forms Example</h5>
+        <button class="btn btn-primary" (click)="addTickets()">Add new row</button>
+        <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush">
+            <div class="list-group-item">
+                <h5 class="card-title">Ticket {{i + 1}}</h5>
+                <div [ class="form-row">
+                    <div class="form-group col-6">
+                        <label>Name</label>
+                        <input type="text" formControlName="name" class="form-control" />
+                        <div class="invalid-feedback">
+                            <div>Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" />
+                        <div class="invalid-feedback">
+                            <div>Email is required</div>
+                            <div>Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <button type="button">Remove</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button class="btn btn-primary mr-1">Buy Tickets</button>
+            <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
+            <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+        </div>
+    </div>
+</form>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="https://jasonwatmore.com/post/2019/06/25/angular-8-dynamic-reactive-forms-example"
+            target="_top">Angular 8 - Dynamic Reactive Forms Example</a>
+    </p>
+    <p>
+        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+    </p>
+</div>
